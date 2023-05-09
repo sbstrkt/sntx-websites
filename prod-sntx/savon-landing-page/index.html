@@ -1,0 +1,110 @@
+<!--
+Made with b&#60;3 by  H-Leaf
+Inspired and relying on  WebGL Water
+From http://madebyevan.com/webgl-water/
+Copyright 2011 Evan Wallace
+Released under the MIT license
+-->
+
+<!DOCTYPE html>
+<html><head>
+  <title>sn-tx | Savon</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <script src="OES_texture_float_linear-polyfill.js"></script>
+  <script src="lightgl.js"></script>
+  <script src="cubemap.js"></script>
+  <script src="renderer.js"></script>
+  <script src="water.js"></script>
+  <script src="main.js"></script>
+  <style type="text/css">
+    @import url('https://fonts.cdnfonts.com/css/semplicita');    
+    body { font: 13px/140% 'Semplicita', sans-serif; background: black; color: white; overflow: hidden; }
+    a { color: inherit; cursor: pointer; }
+    img { display: none; }
+    ul { padding: 0 0 0 20px; }
+    h1 { font: bold 30px/30px 'Semplicita'; text-align: center; }
+    h2 { font: bold italic 17px/17px 'Semplicita';; padding-top: 10px; }
+    h3 { font: bold italic 25px/25px 'Semplicita';; padding-top: 10px; }   
+    small { display: block; font-size: 11px; line-height: 15px; }
+    canvas { position: absolute; top: 0; left: 0; }
+    #help { position: absolute; top: 0; right: 0; bottom: 0; width: 280px; padding-right: 20px; overflow: auto; }
+    #loading { position: absolute; left: 0; top: 50%; right: 300px; text-align: center; margin-top: -8px; }
+    @media (max-width: 600px) {
+      small { font-size: 8px; line-height: 10px; }
+      #help { width: 100px; font-size: 10px; line-height: 12px; }
+    }
+  </style>
+</head><body>
+  <div id="loading">Computing... Hold on...</div>
+  <div id="help">
+
+    <h1>sn-tx | Savon</h1>
+    
+    <h3>Commands</h3>
+    <ul>
+      <li>Play the music on your favorite platform</li>
+      <br>
+      Then:<br>
+      <br>
+      <li>Make ripples</li>
+      <li>Rotate the camera</li>
+      <li>Pause and unpause</li>
+      <li>Move the sphere</li>
+      <li>Set the light direction</li>
+      <li>Toggle gravity</li>
+    </ul>
+    
+
+    <h3>Platforms</h3>
+<h2> Bandcamp </h2>
+	    
+<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1340686828/size=large/bgcol=ffffff/linkcol=de270f/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://sn-tx.bandcamp.com/track/savon">Savon by sn-tx</a></iframe>
+
+<h2> Soundcloud </h2>
+
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1500859687&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/s-n-t-x" title="sn-tx" target="_blank" style="color: #cccccc; text-decoration: none;">sn-tx</a> | <a href="https://soundcloud.com/s-n-t-x/savon" title="Savon" target="_blank" style="color: #cccccc; text-decoration: none;">Savon</a></div>
+
+<h2> Spotify </h2>
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/6zSk68qPobHLHpCSkTqV9J?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</h2>
+    
+    <h3>Synopsis</h3>
+    <p> Savon single release is reminiscent of the vibes of the old times. Something that started in the Punk Era, and ended up in commercial night clubs.</p>
+    
+    <p>Soap, French for soap, is what makes the city so slippery, according to some guy on the Warschauer Bruecke.
+    </p> 
+
+    <p>As continuation of the music track ,this dedicated landing page serves to extend the song as an interactive experience, around the theme of liquid harmonics, and soapy acoustics. </p>
+     
+    <h3>Notice</h3>
+      <p>This demo requires a decent graphics card and up-to-date drivers. If you can't run the demo, you can still <a href="http://youtube.com/watch?v=R0O_9bp3EKQ">see it on YouTube</a>.</p>
+    
+    <p><small>
+    <h2> Technical features</h2>
+    <ul>
+      <li>Raytraced reflections and refractions</li>
+      <li>Analytic ambient occlusion</li>
+      <li>Heightfield water simulation *</li>
+      <li>Soft shadows</li>
+      <li>Caustics (see <a href="https://medium.com/@evanwallace/rendering-realtime-caustics-in-webgl-2a99a29a0b2c">this</a> for details) **</li>
+    </ul>
+
+    <p><small>
+    <h2> Credits</h2>
+    <ul>
+      <li>This concept was made with &#60;3 by H-Leaf | Vink-io </li>
+      <li>credits to <a href="http://madebyevan.com/">Evan Wallace</a> for the interactive 3D model, under relevant licensing.</li>
+      <li>Tile texture from <a href="http://www.flickr.com/photos/zooboing/3682834083/">zooboing</a> on Flickr</li>
+    </ul>
+    
+    </small></p>
+
+  </div>
+  <img id="tiles" src="tiles.jpg">
+  <img id="xneg" src="xneg.jpg">
+  <img id="xpos" src="xpos.jpg">
+  <img id="ypos" src="ypos.jpg">
+  <img id="zneg" src="zneg.jpg">
+  <img id="zpos" src="zpos.jpg">
+</body></html>
